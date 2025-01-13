@@ -12,8 +12,8 @@ import PrimaryButton from "../components/ui/PrimaryButton";
 
 function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
   return (
-    <ScrollView>
-      <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
+      <View style={styles.rootContainer}>
         <Title>GAME OVER!</Title>
         <View style={styles.imageContainer}>
           <Image
@@ -40,14 +40,17 @@ const deviceHeight = Dimensions.get("window").height;
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 24,
+  },
+  rootContainer: {
+    flex: 1,
+    padding: deviceHeight < 400 ? 8 : 24,
     alignItems: "center",
     justifyContent: "center",
   },
   imageContainer: {
-    borderRadius: deviceHeight < 400 ? deviceHeight / 3 : deviceWidth / 3,
-    width: deviceHeight < 400 ? deviceHeight / 1.5 : deviceWidth / 1.5,
-    height: deviceHeight < 400 ? deviceHeight / 1.5 : deviceWidth / 1.5,
+    borderRadius: deviceHeight < 400 ? deviceHeight / 8 : deviceWidth / 3,
+    width: deviceHeight < 400 ? deviceHeight / 4 : deviceWidth / 1.5,
+    height: deviceHeight < 400 ? deviceHeight / 4 : deviceWidth / 1.5,
     overflow: "hidden",
     borderWidth: 3,
     borderColor: Colors.primary800,
