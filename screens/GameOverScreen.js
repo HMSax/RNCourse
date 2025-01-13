@@ -1,31 +1,41 @@
-import { Text, View, StyleSheet, Image, Dimensions } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import Title from "../components/ui/Title";
 import Colors from "../constants/Colors";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
 function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
   return (
-    <View style={styles.screen}>
-      <Title>GAME OVER!</Title>
-      <View style={styles.imageContainer}>
-        <Image
-          source={require("../assets/images/success.png")}
-          style={styles.image}
-        />
+    <ScrollView>
+      <View style={styles.screen}>
+        <Title>GAME OVER!</Title>
+        <View style={styles.imageContainer}>
+          <Image
+            source={require("../assets/images/success.png")}
+            style={styles.image}
+          />
+        </View>
+        <Text style={styles.summaryText}>
+          Your phone needed <Text style={styles.highlight}>{roundsNumber}</Text>{" "}
+          rounds to guess the number{" "}
+          <Text style={styles.highlight}>{userNumber}</Text>.
+        </Text>
+        <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
       </View>
-      <Text style={styles.summaryText}>
-        Your phone needed <Text style={styles.highlight}>{roundsNumber}</Text>{" "}
-        rounds to guess the number{" "}
-        <Text style={styles.highlight}>{userNumber}</Text>.
-      </Text>
-      <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
-    </View>
+    </ScrollView>
   );
 }
 
 export default GameOverScreen;
 
 const deviceWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
   screen: {
@@ -35,9 +45,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imageContainer: {
-    borderRadius: deviceWidth / 3,
-    width: deviceWidth / 1.5,
-    height: deviceWidth / 1.5,
+    borderRadius: deviceHeight < 400 ? deviceHeight / 3 : deviceWidth / 3,
+    width: deviceHeight < 400 ? deviceHeight / 1.5 : deviceWidth / 1.5,
+    height: deviceHeight < 400 ? deviceHeight / 1.5 : deviceWidth / 1.5,
     overflow: "hidden",
     borderWidth: 3,
     borderColor: Colors.primary800,
