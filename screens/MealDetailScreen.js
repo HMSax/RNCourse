@@ -77,5 +77,6 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     width: "80%",
+    marginBottom: 100,
   },
 });
