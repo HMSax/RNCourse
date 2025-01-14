@@ -5,21 +5,21 @@ import MealItem from "../components/MealItem";
 import { MEALS, CATEGORIES } from "../data/dummy-data";
 
 function MealsOverviewScreen({ route, navigation }) {
-  const catId = route.params.categoryId;
+  const categoryId = route.params.categoryId;
 
   const displayedMeals = MEALS.filter((mealItem) => {
-    return mealItem.categoryIds.indexOf(catId) >= 0;
+    return mealItem.categoryIds.indexOf(categoryId) >= 0;
   });
 
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find(
-      (category) => category.id === catId,
+      (category) => category.id === categoryId,
     ).title;
 
     navigation.setOptions({
       title: categoryTitle,
     });
-  }, [catId, navigation]);
+  }, [categoryId, navigation]);
 
   function renderMealItem(itemData) {
     const item = itemData.item;
