@@ -1,19 +1,33 @@
 import { useLayoutEffect } from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import IconButton from "../components/IconButton";
 import List from "../components/MealDetail/List";
 import Subtitle from "../components/MealDetail/Subtitle";
 import MealDetails from "../components/MealDetails";
 import { MEALS } from "../data/dummy-data";
+import { addFavourite, removeFavourite } from "../store/redux/favourites";
+// import { FavouritesContext } from '../store/context/favourites-context';
 
 function MealDetailScreen({ route, navigation }) {
-  const mealId = route.params.mealId;
+  // const favouriteMealsCtx = useContext(FavouritesContext);
+  const favouriteMealIds = useSelector((state) => state.favouriteMeals.ids);
+  const dispatch = useDispatch();
 
+  const mealId = route.params.mealId;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-  function headerButtonPressHandler() {
-    console.log("Pressed!");
+  const mealIsFavourite = favouriteMealIds.includes(mealId);
+
+  function changeFavouriteStatusHandler() {
+    if (mealIsFavourite) {
+      // favouriteMealsCtx.removeFavourite(mealId);
+      dispatch(removeFavourite({ id: mealId }));
+    } else {
+      // favouriteMealsCtx.addFavourite(mealId);
+      dispatch(addFavourite({ id: mealId }));
+    }
   }
 
   useLayoutEffect(() => {
@@ -21,15 +35,14 @@ function MealDetailScreen({ route, navigation }) {
       headerRight: () => {
         return (
           <IconButton
-            icon="star"
+            icon={mealIsFavourite ? "star" : "star-outline"}
             color="white"
-            size={24}
-            onPress={headerButtonPressHandler}
+            onPress={changeFavouriteStatusHandler}
           />
         );
       },
     });
-  }, [navigation, headerButtonPressHandler]);
+  }, [navigation, changeFavouriteStatusHandler]);
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -78,6 +91,5 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     width: "80%",
-    marginBottom: 100,
   },
 });
