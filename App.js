@@ -19,7 +19,8 @@ function DrawerNavigator() {
       screenOptions={{
         headerStyle: { backgroundColor: "#351401" },
         headerTintColor: "white",
-        sceneContainerStyle: { backgroundColor: "#3f2f25" },
+        sceneStyle: { backgroundColor: "#3f2f25" },
+        //sceneContainerStyle: { backgroundColor: "#3f2f25" }, //replaced with sceneStyle
         drawerContentStyle: { backgroundColor: "#351401" },
         drawerInactiveTintColor: "white",
         drawerActiveTintColor: "#351401",
@@ -37,7 +38,7 @@ function DrawerNavigator() {
         }}
       />
       <Drawer.Screen
-        name="Favorites"
+        name="Favourites"
         component={FavouritesScreen}
         options={{
           drawerIcon: ({ color, size }) => (
