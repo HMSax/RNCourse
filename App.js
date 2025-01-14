@@ -23,7 +23,7 @@ function DrawerNavigator() {
         drawerContentStyle: { backgroundColor: "#351401" },
         drawerInactiveTintColor: "white",
         drawerActiveTintColor: "#351401",
-        drawerActiveBackgroundColor: "#e4baa1",
+        drawerActiveBackgroundColor: "#d59e7d",
       }}
     >
       <Drawer.Screen
