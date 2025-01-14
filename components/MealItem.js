@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   buttonPressed: {
-    opacity: 0.5,
+    opacity: Platform.OS === "ios" ? 0.5 : 0.7,
   },
   innerContainer: {
     borderRadius: 8,
