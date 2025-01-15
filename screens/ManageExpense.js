@@ -11,7 +11,7 @@ import { storeExpense, updateExpense, deleteExpense } from "../util/http";
 
 function ManageExpense({ route, navigation }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(undefined);
 
   const expensesCtx = useContext(ExpensesContext);
 

@@ -9,7 +9,7 @@ import { fetchExpenses } from "../util/http";
 
 function RecentExpenses() {
   const [isFetching, setIsFetching] = useState(true);
-  const [error, setError] = useState();
+  const [error, setError] = useState(undefined);
 
   const expensesCtx = useContext(ExpensesContext);
 
