@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: 24,
-    paddingBottom: 0,
+    paddingBottom: 2,
     backgroundColor: GlobalStyles.colors.primary700,
   },
   infoText: {

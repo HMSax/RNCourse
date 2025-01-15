@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     color: GlobalStyles.colors.primary200,
   },
   pressed: {
-    opacity: 0.75,
+    opacity: 0.7,
     backgroundColor: GlobalStyles.colors.primary100,
     borderRadius: 4,
   },
