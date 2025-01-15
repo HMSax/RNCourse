@@ -15,6 +15,6 @@ const favouritesSlice = createSlice({
   },
 });
 
-export const addFavourite = favouritesSlice.actions.addFavorite;
-export const removeFavourite = favouritesSlice.actions.removeFavorite;
+export const addFavourite = favouritesSlice.actions.addFavourite;
+export const removeFavourite = favouritesSlice.actions.removeFavourite;
 export default favouritesSlice.reducer;

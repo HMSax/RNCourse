@@ -37,6 +37,7 @@ function MealDetailScreen({ route, navigation }) {
           <IconButton
             icon={mealIsFavourite ? "star" : "star-outline"}
             color="white"
+            size={26}
             onPress={changeFavouriteStatusHandler}
           />
         );
