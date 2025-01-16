@@ -10,14 +10,23 @@ import { Colors } from "../../constants/colors";
 import OutlinedButton from "../UI/OutlinedButton";
 
 function ImagePicker({ onTakeImage }) {
-  const [pickedImage, setPickedImage] = useState();
+  const [pickedImage, setPickedImage] = useState(undefined);
 
   const [cameraPermissionInformation, requestPermission] =
     useCameraPermissions();
 
   async function verifyPermissions() {
+    console.log("Permission Information:", cameraPermissionInformation);
+
+    if (!cameraPermissionInformation) {
+      console.log("Permissions information not yet available.");
+      return false;
+    }
+
     if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
+      console.log("Requesting permission...");
       const permissionResponse = await requestPermission();
+      console.log("Permission Response:", permissionResponse);
       return permissionResponse.granted;
     }
 
@@ -36,7 +45,7 @@ function ImagePicker({ onTakeImage }) {
     const hasPermission = await verifyPermissions();
 
     if (!hasPermission) {
-      console.log("not permitted!!!!");
+      console.log("Camera permission not granted.");
       return;
     }
 
@@ -46,10 +55,12 @@ function ImagePicker({ onTakeImage }) {
       quality: 0.5,
     });
 
-    console.log(image);
-
-    setPickedImage(image.uri);
-    onTakeImage(image.uri);
+    if (!image.cancelled) {
+      setPickedImage(image.uri);
+      onTakeImage(image.uri);
+    } else {
+      console.log("Image picking cancelled.");
+    }
   }
 
   let imagePreview = <Text>No image taken yet.</Text>;

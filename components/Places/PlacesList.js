@@ -8,7 +8,7 @@ function PlacesList({ places }) {
   const navigation = useNavigation();
 
   function selectPlaceHandler(id) {
-    navigation.navigate("PlaceDetails", {
+    navigation.navigateDeprecated("PlaceDetails", {
       placeId: id,
     });
   }

@@ -4,7 +4,7 @@ import { Place } from "../models/place";
 
 const database = SQLite.openDatabaseSync("places.db");
 
-export function init() {
+export async function init() {
   return database.runAsync(`
         CREATE TABLE IF NOT EXISTS places (
             id INTEGER PRIMARY KEY NOT NULL,
@@ -17,7 +17,7 @@ export function init() {
     `);
 }
 
-export function insertPlace(place) {
+export async function insertPlace(place) {
   return database.runAsync(
     `
             INSERT INTO places (title, imageUri, address, lat, lng)
