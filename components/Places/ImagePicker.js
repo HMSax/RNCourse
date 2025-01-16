@@ -18,7 +18,6 @@ function ImagePicker({ onTakeImage }) {
   async function verifyPermissions() {
     if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
       const permissionResponse = await requestPermission();
-
       return permissionResponse.granted;
     }
 
@@ -37,6 +36,7 @@ function ImagePicker({ onTakeImage }) {
     const hasPermission = await verifyPermissions();
 
     if (!hasPermission) {
+      console.log("not permitted!!!!");
       return;
     }
 
@@ -45,6 +45,8 @@ function ImagePicker({ onTakeImage }) {
       aspect: [16, 9],
       quality: 0.5,
     });
+
+    console.log(image);
 
     setPickedImage(image.uri);
     onTakeImage(image.uri);
