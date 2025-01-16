@@ -29,7 +29,7 @@
       [
         "expo-image-picker",
         {
-          "cameraPermission": "The app needs access to your camera in order to take photos of your favorite places."
+          "cameraPermission": "The app needs access to your camera in order to take photos of your favourite places."
         }
       ],
       "expo-sqlite"
