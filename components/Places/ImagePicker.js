@@ -55,9 +55,9 @@ function ImagePicker({ onTakeImage }) {
       quality: 0.5,
     });
 
-    if (!image.cancelled) {
-      setPickedImage(image.uri);
-      onTakeImage(image.uri);
+    if (!image.canceled) {
+      setPickedImage(image.assets[0].uri);
+      onTakeImage(image.assets[0].uri);
     } else {
       console.log("Image picking cancelled.");
     }
